@@ -1,0 +1,84 @@
+/* Comfortable touch targets and adaptive editing surfaces. */
+#app{width:100%;height:100%;border-radius:0;box-shadow:none;transform:none!important}
+button,input,select{font-family:inherit}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #8ac7ff;outline-offset:2px}
+.icon-btn{width:44px;height:44px;flex-shrink:0}
+.title{min-height:44px}
+.lib-btn,.mini-btn,.step-btn,.dr-x,.vp-pill,.tabs button,.eye-actions button,.edit-heading button,.edit-row button{min-height:44px;min-width:44px}
+.lib-btn,.tabs button,.eye-actions button,.edit-row{font-size:14px}
+.mini-btn,.step-btn{width:44px;height:44px}
+#eyeBtn{display:inline-flex;width:auto;gap:6px;padding:0 10px}
+.controls{padding:8px 12px max(8px,env(safe-area-inset-bottom));gap:8px;max-height:48%;overflow:auto}
+.crow.top{gap:8px}
+.property-tabs{display:flex;background:#25252b;border-radius:10px;padding:3px;gap:4px}
+.property-tabs button{flex:1;min-height:44px;border:0;border-radius:8px;background:transparent;color:#b7b7be;font-size:14px}
+.property-tabs button[aria-pressed=true]{background:#44444c;color:white}
+.property-group{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:14px}
+.property-group[hidden]{display:none}
+.property-group input[type=range]{min-width:80px;height:44px}
+.property-group .blend{height:44px;font-size:14px;max-width:130px}
+.property-group .lbl b,.angle-lbl,.angle-lbl b{font-size:14px}
+.property-group .step-btns{margin:0;gap:8px}
+.property-group .danger{min-height:44px;padding:0 12px;border:0;border-radius:10px;background:#30242a;color:#ff9299;font-size:14px}
+.controls.disabled .property-group{opacity:.4;pointer-events:none}
+.eye-f>span,.eye-f>span b{font-size:14px}
+.eye-f input[type=range]{height:44px;flex:none}
+.eye-bgrow{flex-wrap:wrap;font-size:14px}
+.eye-bgrow>span{width:100%}
+.eye-bgsw{flex:1;flex-wrap:wrap;gap:2px}
+.eye-bgsw button,.eye-bgsw button.on{width:44px;height:44px;transform:none;border:8px solid #1c1c21;border-radius:50%;position:relative}
+.eye-bgsw button.on::after{content:'✓';position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:17px;text-shadow:0 1px 3px #000,0 0 3px #000}
+.eye-bgpick,.eye-bgpick input{min-width:44px;min-height:44px}
+.eye-actions{flex-wrap:wrap}
+.eye-actions button{flex:1;white-space:nowrap}
+#eyeSheet{max-height:50%}
+#edgePanel p{font-size:13px}
+.edit-row{flex-wrap:wrap}
+.edit-row input{min-width:70px}
+#sheet .panel{display:flex;flex-direction:column;overflow:hidden;padding:0;max-height:85%}
+.sheet-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid #38383f;flex:none}
+.sheet-heading h3{margin:0;font-size:17px}
+.sheet-heading button{min-height:44px;border:0;border-radius:10px;padding:0 14px;background:#303039;color:#8ac7ff;font-size:16px}
+.sheet-body{overflow:auto;padding:0 16px 16px;overscroll-behavior:contain}
+.sheet-body h4{font-size:14px;color:#aaaab3;margin:20px 4px 8px}
+.sheet-body .row{min-height:48px;font-size:15px}
+.drawer:not(.open){visibility:hidden}
+.drawer .tabs{flex-wrap:nowrap;overflow-x:auto;flex-shrink:0}
+.drawer .tabs button{flex-shrink:0}
+.drawer .filters{overflow-x:auto;gap:4px}
+.drawer .chip{flex-shrink:0;white-space:nowrap;min-height:44px;font-size:14px}
+@media(min-width:1000px){
+ #app{display:grid;grid-template-columns:minmax(0,1fr) 300px;grid-template-rows:52px minmax(0,1fr)}
+ .topbar{grid-column:1/-1;grid-row:1}.viewport{grid-column:1;grid-row:2}
+ #controls,#eyeSheet,#edgePanel{grid-column:2;grid-row:2;max-height:100%;height:100%;border-left:1px solid #34343a;border-radius:0}
+ #controls{justify-content:flex-start;padding:16px}.crow.top{align-content:start}
+ #eyeSheet .panel{border-radius:0;padding:16px}.eye-grid{grid-template-columns:1fr}
+ #app:has(.drawer.open){grid-template-columns:280px minmax(0,1fr) 300px}
+ #app:has(.drawer.open) .viewport{grid-column:2}
+ #app:has(.drawer.open) #controls{grid-column:3}
+ .drawer.open{grid-column:1;grid-row:2;position:relative;inset:auto;width:auto;height:100%;border-radius:0;box-shadow:none;transform:none}
+ #drawerScrim{display:none!important}.drawer .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .drawer .tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible}
+ .drawer .tabs button{min-width:0;width:100%;padding:7px 8px}
+ .drawer .filters{flex-wrap:wrap;overflow:visible}
+ .sheet:not(#eyeSheet) .panel{max-width:560px;left:50%;right:auto;width:calc(100% - 32px);transform:translateX(-50%)}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
+#libraryManage{margin-left:auto;min-height:44px;padding:0 10px;white-space:nowrap;border:0;border-radius:10px;background:#25252b;color:#8ac7ff;font-size:14px}
+#libraryManage + .dr-x{margin-left:0}
+.drawer:not(.managing) .grp-del,.drawer:not(.managing) .asset-management{display:none}
+.asset-management{display:flex;gap:4px;margin-top:8px}
+.asset-management button{flex:1;min-height:44px;padding:0 5px;background:#29292f;border:0;border-radius:8px;color:#c5defa;font-size:13px}
+.asset-management button.danger{color:#ff9299}
+.eye-choose{display:block;width:100%;padding:0;border:0;background:none;color:inherit;text-align:left;cursor:pointer}
+.eye-pair-preview{display:flex!important;gap:6px;padding:8px;height:88px!important}
+.eye-part{flex:1;min-width:0;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.eye-part img{object-fit:contain;max-width:100%;max-height:calc(100% - 20px)}
+.eye-part small{font-size:12px;color:#e9e9ef;background:#29292f;border-radius:4px;padding:0 5px}
+.eye-asset.on .thumb{border:2px solid var(--accent)}
+.eye-asset .cap{display:block;font-size:14px;color:#ededf0}
+.eye-meta{display:block;font-size:12px;color:#a5a5af;line-height:1.5;margin-top:4px}
+.eye-asset.on .eye-meta{color:#8ac7ff}
+.grid .empty{color:#a1a1ab;font-size:14px}
+.grid .empty b{color:#e0e0e8;font-size:15px}
+.lrow .sbtn,.proj-list button,.ask .b{min-width:44px;min-height:44px}
